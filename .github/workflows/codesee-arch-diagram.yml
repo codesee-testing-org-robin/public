@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Run map action on action code
     steps:
+      - name: debug
+        run: env
+
       - name: checkout
         id: checkout
         uses: actions/checkout@v2
