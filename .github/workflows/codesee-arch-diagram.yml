@@ -2,25 +2,20 @@ on:
   push:
     branches:
       - master
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened]
 
 name: CodeSee Map
 
 jobs:
-  map_action:
+  test_map_action:
     runs-on: ubuntu-latest
     name: Run map action on action code
     steps:
-      - name: debug
-        run: env
-
       - name: checkout
         id: checkout
         uses: actions/checkout@v2
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
       # codesee-detect-languages has an output with id languages.
